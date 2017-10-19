@@ -26,4 +26,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function field()
+    {
+        return $this->belongsTo(Field::class);
+    }
+
+    public function takenCourses()
+    {
+        return $this->belongsToMany(Course::class, 'user_taken_courses')
+            ->withTimestamps();
+    }
+
+    public function passedCourses()
+    {
+        return $this->takenCourses()->wherePivot('score', '>=', 10);
+    }
 }

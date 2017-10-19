@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class Complex extends Model
 {
     protected $guarded = [];
 
-    public function classes()
+    public function venues()
     {
-        return $this->hasMany(UniClass::class);
+        return $this->hasMany(Venue::class);
     }
 }
