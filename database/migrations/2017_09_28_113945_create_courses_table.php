@@ -15,12 +15,14 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('code')->unique();
+            $table->unsignedInteger('code');
             $table->string('title');
             $table->unsignedTinyInteger('practical_unit_count')->default(0);
             $table->unsignedTinyInteger('theoretical_unit_count')->default(0);
 
             $table->timestamps();
+
+            $table->unique(['code', 'practical_unit_count', 'theoretical_unit_count']);
         });
     }
 
