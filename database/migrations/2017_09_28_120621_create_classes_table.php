@@ -38,7 +38,7 @@ class CreateClassesTable extends Migration
             $table->string('field')->nullable();
             $table->timestamps();
 
-            $table->unique(['course_id', 'code']);
+            $table->unique(['course_id', 'code', 'teacher_id']);
 
             $table->foreign('course_id')
                 ->references('id')->on('courses')
