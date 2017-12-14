@@ -7,8 +7,13 @@
 /vendor
 /.idea
 /.vagrant
+/.env
+/.DS_Store
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.DS_Store
+composer.lock
+yarn.lock
 .env
