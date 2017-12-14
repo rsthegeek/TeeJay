@@ -16,7 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespaces = [
         'misc'      => 'App\Http\Controllers',
-        'public'    =>  'App\Http\Controllers\Public',
+        'public'    =>  'App\Http\Controllers\Publik',
         'admin'     =>  'App\Http\Controllers\Admin',
     ];
 

@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Publik;
 
+use App\Http\Controllers\Controller;
 use App\UniClass;
 use Illuminate\Http\Request;
 
-class ClassesController extends Controller
+class CoursesController extends Controller
 {
     public function index()
     {
-        $classes = UniClass::with([
+        $courses = UniClass::with([
             'course' => function ($q) {
                 $q->select('id', 'code', 'title');
             },
@@ -24,7 +25,7 @@ class ClassesController extends Controller
             }
         ])->paginate(15);
 
-        return view('classes.index', compact('classes'));
+        return view('public.courses.index', compact('courses'));
     }
 
     public function show(UniClass $class)
