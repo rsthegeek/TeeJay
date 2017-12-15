@@ -31,9 +31,9 @@
                         ])
 
                         @include('layouts.partials.fields.password', [
-                            'name' => 'password_conformation',
+                            'name' => 'password_confirmation',
                             'id' => 'password-confirm',
-                            'title' => 'کلمه عبور',
+                            'title' => 'تکرار کلمه عبور',
                             'required' => true,
                         ])
 
