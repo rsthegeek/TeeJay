@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TeeJay') }}</title>
+    <title>{{ config('app.name', 'TeeJay') }}::@yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -41,9 +41,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('public.classes.index') }}">کلاس‌ها</a></li>
-                        <li><a href="{{ route('login') }}">درس‌ها</a></li>
-                        <li><a href="{{ route('login') }}">اساتید</a></li>
-                        <li><a href="{{ route('login') }}">دانشکده‌ها</a></li>
+                        <li><a href="{{ route('public.courses.index') }}">درس‌ها</a></li>
+                        <li><a href="{{ route('public.teachers.index') }}">اساتید</a></li>
+                        <li><a href="{{ route('public.complexes.index') }}">دانشکده‌ها</a></li>
+                        <li><a href="{{ route('login') }}">مکان‌یاب</a></li>
                     </ul>
 
                     <!-- Left Side Of Navbar -->
