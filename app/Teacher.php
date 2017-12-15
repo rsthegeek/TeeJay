@@ -12,4 +12,9 @@ class Teacher extends Model
     {
         return $this->hasMany(UniClass::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }
