@@ -40,10 +40,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav">
-&nbsp;                      <li><a href="{{ route('login') }}">دوره‌ها</a></li>
+                        <li><a href="{{ route('public.classes.index') }}">کلاس‌ها</a></li>
+                        <li><a href="{{ route('login') }}">درس‌ها</a></li>
                         <li><a href="{{ route('login') }}">اساتید</a></li>
                         <li><a href="{{ route('login') }}">دانشکده‌ها</a></li>
-                        <li><a href="{{ route('login') }}">کلاس‌ها</a></li>
                     </ul>
 
                     <!-- Left Side Of Navbar -->
