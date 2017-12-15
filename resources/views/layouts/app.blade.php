@@ -13,6 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-rtl.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+
+    @yield('header')
 </head>
 <body>
     <div id="app">
@@ -79,5 +82,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/plugins/sweetalert/sweetalert.min.js') }}"></script>
+    @yield('footer')
 </body>
 </html>
