@@ -125,7 +125,9 @@
                             </tbody>
                         </table>
 
-                        {{ $classes->appends(request()->except('page'))->links() }}
+                        <div class="text-center">
+                            {{ $classes->appends(request()->except('page'))->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
