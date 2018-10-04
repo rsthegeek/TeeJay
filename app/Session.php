@@ -22,4 +22,13 @@ class Session extends Model
     {
         $this->hasMany(UniClass::class, 'third_session');
     }
+
+    public function toString()
+    {
+        // G:i
+        return
+            faNumerals(substr($this->starts_at, 0, -3)).
+            ' ~ '.
+            faNumerals(substr($this->ends_at, 0, -3));
+    }
 }

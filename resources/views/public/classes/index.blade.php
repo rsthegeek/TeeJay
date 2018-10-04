@@ -36,22 +36,30 @@
 
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'first_day[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
+                                'list' => $days,
                                 'multi' => true,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'روز اول'
                              ])
 
+                             @include('layouts.partials.fields.select-searchable', [
+                                'name' => 'first_session[]', 'dir' => 'rtl',
+                                'list' => $sessions,
+                                'multi' => true,
+                                'wrapperClass' => 'col-md-12 col-sm-3',
+                                'placeHolder' => 'ساعت اول'
+                             ])
+
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'second_day[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
+                                'list' => $days,
                                 'multi' => true,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'روز دوم'
                              ])
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'second_session[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
+                                'list' => $sessions,
                                 'multi' => true,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'ساعت دوم'
@@ -59,31 +67,30 @@
 
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'third_day[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
+                                'list' => $days,
                                 'multi' => true,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'روز سوم'
                              ])
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'third_session[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
+                                'list' => $sessions,
                                 'multi' => true,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'ساعت سوم'
                              ])
 
                             @include('layouts.partials.fields.select-searchable', [
-                                'name' => 'orderby[]', 'dir' => 'rtl',
-                                'list' => ['داش', 'توش'],
-                                'multi' => true,
+                                'name' => 'orderby', 'dir' => 'rtl',
+                                'list' => $orderables,
                                 'wrapperClass' => 'col-md-12 col-sm-3',
-                                'placeHolder' => 'مرتب سازی بر اساس'
+                                'placeHolder' => 'مرتب سازی بر اساس',
                              ])
 
                             @include('layouts.partials.fields.select-searchable', [
                                 'name' => 'sort', 'dir' => 'rtl',
                                 'list' => ['ASC' => 'صعودی', 'DESC' => 'نزولی'],
-                                'multi' => true,
+                                'default' => 'DESC',
                                 'wrapperClass' => 'col-md-12 col-sm-3',
                                 'placeHolder' => 'ترتیب نمایش'
                              ])
@@ -106,16 +113,26 @@
                                     <th>عنوان درس</th>
                                     <th>استاد</th>
                                     <th>محل برگزاری</th>
+                                    <th>جلیسه اول</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @forelse($classes as $class)
                                 <tr>
-                                    <td>{{ $class->code }}</td>
-                                    <td>{{ $class->course->code }}</td>
+                                    <td><a href="{{ route('public.classes.show', $class->code) }}">{{ faNumerals($class->code) }}</a></td>
+                                    <td>{{ faNumerals($class->course->code) }}</td>
                                     <td>{{ $class->course->title }}</td>
                                     <td>{{ $class->teacher->full_name }}</td>
-                                    <td>{{ $class->venue->complex->title }} {{ $class->venue->code }}</td>
+                                    <td>
+                                        {{ $class->venue->complex->title }}
+                                        {{ faNumerals($class->venue->code) }}
+                                    </td>
+                                    <td>
+                                        {{ $class->first_session_day_title }}
+                                        @if($class->firstSession)
+                                            {{ $class->firstSession->toString() }}
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

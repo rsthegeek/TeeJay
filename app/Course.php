@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $guarded = [];
-
+    protected $hidden = [
+        'id', 'created_at', 'updated_at'
+    ];
     public function classes()
     {
         return $this->hasMany(UniClass::class);

@@ -1,3 +1,6 @@
+@php($requestParam = str_replace(['[', ']'], ['', ''], $name))
+@php($defaultValue = Request::get($requestParam, isset($default) ? $default : null))
+@php($isMulti = isset($multi) && $multi)
 <div class="form-group {{$errors->has($name) ? 'has-error' : null }}
     {{ isset($wrapperClass) ? $wrapperClass : '' }}">
     @if(isset($title))
@@ -5,11 +8,14 @@
                class="col-md-4 control-label">{{ $title }}</label>
     @endif
     <select name="{{ $name }}" class="form-control {{ (isset($class) ? $class : '')}}"
-        {{ isset($multi) && $multi ? 'multiple' : '' }}
+        {{ $isMulti ? 'multiple' : '' }}
         {{ isset($require) && $require ? 'required' : '' }}>
         {{--<option value="" {{ isset($value) ? : 'selected' }} disabled>{{ $placeHolder or '' }}</option>--}}
         @foreach($list as $index => $item)
-            @if(isset($value) && $value == $index)
+            @if(
+                (!$isMulti && $defaultValue == $index)
+                || ($isMulti && in_array($index, (array) $defaultValue))
+            )
                 <option value="{{ $index }}" selected>{{ $item }}</option>
             @else
                 <option value="{{ $index }}">{{ $item }}</option>
