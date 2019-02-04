@@ -24,13 +24,21 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>کد</th>
+                                    <th>نام</th>
+                                    <th>نام خانوادگی</th>
+                                    <th>تعداد درس های ارائه شده</th>
+                                    <th>تعداد کلاس های ارائه شده</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @forelse($teachers as $teacher)
                                 <tr>
-                                    <td>{{ $teacher }}</td>
+                                    <td><a href="{{ route('public.teachers.show', $teacher->id) }}">{{ $teacher->id }}</a></td>
+                                    <td>{{ $teacher->first_name }}</td>
+                                    <td>{{ $teacher->last_name }}</td>
+                                    <td>{{ $teacher->course_count }}</td>
+                                    <td>{{ $teacher->classes_count }}</td>
                                 </tr>
                             @empty
                                 <tr>

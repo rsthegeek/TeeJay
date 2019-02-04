@@ -24,13 +24,19 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>کد</th>
+                                    <th>عنوان</th>
+                                    <th>تعداد واحد نظری</th>
+                                    <th>تعداد واحد عملی</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @forelse($courses as $course)
                                 <tr>
-                                    <td>{{ $course }}</td>
+                                    <td><a href="{{ route('public.courses.show', $course->code) }}">{{ $course->code }}</a></td>
+                                    <td>{{ $course->title }}</td>
+                                    <td>{{ $course->theoretical_unit_count }}</td>
+                                    <td>{{ $course->practical_unit_count }}</td>
                                 </tr>
                             @empty
                                 <tr>

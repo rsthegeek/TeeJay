@@ -14,10 +14,12 @@ class TeachersController extends Controller
 {
     public function index(Request $request)
     {
-        $teachers = Teacher::orderBy(
-            $request->get('orderBy', 'created_at'),
-            $request->get('sort', 'DESC')
-        )->paginate(15);
+        $teachers = Teacher::select('*', \DB::raw('("-") AS course_count'))
+            ->withCount('classes')
+            ->orderBy(
+                $request->get('orderBy', 'created_at'),
+                $request->get('sort', 'DESC')
+            )->paginate(15);
 
         return view('public.teachers.index',
             compact('teachers')
@@ -26,6 +28,7 @@ class TeachersController extends Controller
 
     public function show(Teacher $teacher)
     {
+        return $teacher->load('classes');
         return view('public.teachers.show', compact('teacher'));
     }
 }
