@@ -26,8 +26,9 @@
                                 <tr>
                                     <th>کد</th>
                                     <th>عنوان</th>
-                                    <th>تعداد واحد نظری</th>
-                                    <th>تعداد واحد عملی</th>
+                                    <th>کلاس‌های ارائه شده</th>
+                                    <th>واحد نظری</th>
+                                    <th>واحد عملی</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td><a href="{{ route('public.courses.show', $course->code) }}">{{ $course->code }}</a></td>
                                     <td>{{ $course->title }}</td>
+                                    <td>{{ $course->classes_count }}</td>
                                     <td>{{ $course->theoretical_unit_count }}</td>
                                     <td>{{ $course->practical_unit_count }}</td>
                                 </tr>

@@ -15,7 +15,12 @@ class CoursesController extends Controller
         $courses = Course::orderBy(
             $request->get('orderBy', 'created_at'),
             $request->get('sort', 'DESC')
-        )->paginate(15);
+        )->when(\Auth::check(), function ($query) {
+            $query->with(['studentsTakenThis' => function ($q) {
+                $q->selectRaw(where('user_id', \Auth::user()->id));
+            }]);
+        })->withCount('classes')
+            ->paginate(15);
 
         return view('public.courses.index',
             compact('courses')
@@ -30,4 +35,6 @@ class CoursesController extends Controller
         );
         return view('public.courses.show', compact('course'));
     }
+
+    protected function 
 }

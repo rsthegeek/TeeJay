@@ -26,9 +26,9 @@ class CreateClassesTable extends Migration
             $table->unsignedInteger('third_session_id')->nullable();
             $table->enum('exam_time', [1,2,3,4])->nullable();
             $table->date('exam_date')->nullable();
-            $table->unsignedTinyInteger('remainingCap');
-            $table->unsignedTinyInteger('boysCount');
-            $table->unsignedTinyInteger('girlsCount');
+            $table->unsignedInteger('remainingCap');
+            $table->unsignedInteger('boysCount');
+            $table->unsignedInteger('girlsCount');
             $table->boolean('allowedGender')->nullable();
             $table->boolean('status15');
             $table->boolean('status17');
