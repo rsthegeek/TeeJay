@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "rsthegeek\teejay",
+    "description": "A scraper designed to streamline the process of selecting course units for the semester on enroll.azad.ac.ir, academic portal used by Islamic Azad University in Iran.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
